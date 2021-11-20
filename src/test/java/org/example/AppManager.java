@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.helpers.FindItemsHelper;
 import org.example.helpers.LoginHelper;
 import org.example.helpers.NavigationHelper;
 import org.example.helpers.TodoHelper;
@@ -13,6 +14,7 @@ public class AppManager {
     private NavigationHelper navigationHelper;
     private LoginHelper loginHelper;
     private TodoHelper todoHelper;
+    private FindItemsHelper findItemsHelper;
 
     public AppManager() {
         System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");
@@ -21,6 +23,7 @@ public class AppManager {
         this.navigationHelper = new NavigationHelper(this);
         this.loginHelper = new LoginHelper(this);
         this.todoHelper = new TodoHelper(this);
+        this.findItemsHelper = new FindItemsHelper(this);
     }
 
     public void destruct() {
@@ -38,6 +41,10 @@ public class AppManager {
 
     public TodoHelper getTodoHelper() {
         return todoHelper;
+    }
+
+    public FindItemsHelper getFindItemsHelper() {
+        return findItemsHelper;
     }
 
     public ChromeDriver getDriver() {

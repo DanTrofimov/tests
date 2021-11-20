@@ -13,4 +13,8 @@ public class NavigationHelper extends HelperBase {
     public void visitPage(String pageUrl) {
         this.driver.get(this.baseUrl + pageUrl);
     }
+
+    public String getCurrentUrl() {
+        return this.driver.getCurrentUrl();
+    }
 }

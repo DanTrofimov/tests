@@ -2,10 +2,12 @@ package org.example.tests;
 
 import org.example.entities.AccountData;
 import org.example.entities.TodoItem;
+import org.example.tests.base.TodoEntityTest;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CreteEntityTest extends TestBase {
+public class CreteEntityTest extends TodoEntityTest {
     public AccountData currentUser;
 
     @Before
@@ -16,9 +18,12 @@ public class CreteEntityTest extends TestBase {
 
     @Test
     public void createTodo() {
-        TodoItem todo = new TodoItem("example text");
+        String todoText = "example text " + Math.random();
+        TodoItem todo = new TodoItem(todoText);
 
         auth(currentUser);
         createTodo(todo);
+
+        Assert.assertTrue(hasItemByText(todoText));
     }
 }

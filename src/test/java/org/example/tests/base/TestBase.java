@@ -1,7 +1,8 @@
-package org.example.tests;
+package org.example.tests.base;
 import org.example.AppManager;
 import org.example.entities.AccountData;
 import org.example.entities.TodoItem;
+import org.example.helpers.FindItemsHelper;
 import org.example.helpers.LoginHelper;
 import org.example.helpers.NavigationHelper;
 import org.example.helpers.TodoHelper;
@@ -11,6 +12,7 @@ public class TestBase {
     protected NavigationHelper navigationHelper;
     protected LoginHelper loginHelper;
     protected TodoHelper todoHelper;
+    protected FindItemsHelper findItemsHelper;
 
     static {
         appManager = new AppManager();
@@ -20,6 +22,7 @@ public class TestBase {
         this.navigationHelper = appManager.getNavigationHelper();
         this.loginHelper = appManager.getLoginHelper();
         this.todoHelper = appManager.getTodoHelper();
+        this.findItemsHelper = appManager.getFindItemsHelper();
     };
 
     public void auth(AccountData user) {
@@ -27,18 +30,12 @@ public class TestBase {
         loginHelper.auth(user);
     };
 
-    public void createTodo(TodoItem todo) {
-        navigationHelper.visitPage("main");
-        todoHelper.createTodo(todo);
-    };
-
-    public void deleteTodo() {
-        navigationHelper.visitPage("main");
-        todoHelper.deleteTodo();
+    public boolean hasItemByText(String text) {
+        return findItemsHelper.hasElementByText(text);
     }
 
-    public TodoItem find(String todoText) {
-
+    public String getCurrentUrl() {
+        return navigationHelper.getCurrentUrl();
     }
 
     public void destruct() {
