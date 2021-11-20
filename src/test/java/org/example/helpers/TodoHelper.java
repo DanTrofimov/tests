@@ -15,4 +15,9 @@ public class TodoHelper extends HelperBase {
         driver.findElement(By.name("todoText")).sendKeys(todo.text);
         driver.findElement(By.cssSelector(".todo-form > button")).click();
     }
+
+    public void deleteTodo() {
+        // deleting last todo item
+        driver.findElement(By.cssSelector(".todo-list > div:first-child > form:nth-last-child(2) .todo-button-wrapper button:last-child")).click();
+    }
 }

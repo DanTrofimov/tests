@@ -15,11 +15,17 @@ public class AppManager {
     private TodoHelper todoHelper;
 
     public AppManager() {
+        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");
         this.driver = new ChromeDriver();
         this.baseUrl = "https://todo--spring--boot.herokuapp.com/";
         this.navigationHelper = new NavigationHelper(this);
         this.loginHelper = new LoginHelper(this);
         this.todoHelper = new TodoHelper(this);
+    }
+
+    public void destruct() {
+        this.driver.close();
+        this.driver.quit();
     }
 
     public NavigationHelper getNavigationHelper() {
