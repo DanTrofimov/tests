@@ -15,7 +15,7 @@ public class XmlSerializer<T> {
         }
     }
 
-    public T deserializeEntity(Class entityClass, String fileName) {
+    public T deserializeEntity(String fileName) {
         try {
             File file = new File("src/test/java/org/example/generator/data/" + fileName);
             String xml = inputStreamToString(new FileInputStream(file));

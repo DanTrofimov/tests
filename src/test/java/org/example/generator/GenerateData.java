@@ -11,7 +11,7 @@ public class GenerateData<T> {
         xmlSerializer.serializeEntity(EntityMocker.mockEntity(entityType), fileName);
     }
 
-    public T getEntity(Class entityClass, String fileName) {
-        return (T) xmlSerializer.deserializeEntity(entityClass, fileName);
+    public T getEntity(String fileName) {
+        return (T) xmlSerializer.deserializeEntity(fileName);
     }
 }

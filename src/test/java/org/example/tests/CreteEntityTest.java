@@ -20,7 +20,7 @@ public class CreteEntityTest extends TodoEntityTest {
     public static Stream<Arguments> getGeneratedData() {
         String sourceFile = "todo.xml";
         generateData.handleEntity("t", sourceFile);
-        return Stream.of(Arguments.of(generateData.getEntity(TodoItem.class, sourceFile)));
+        return Stream.of(Arguments.of(generateData.getEntity(sourceFile)));
     }
 
     @BeforeEach
