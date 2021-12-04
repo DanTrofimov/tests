@@ -26,7 +26,7 @@ public class CreteEntityTest extends TodoEntityTest {
     @BeforeEach
     public void init() {
         setUp();
-        currentUser = new AccountData("trofimovdanil946@gmail.com", "Hello123");
+        currentUser = new AccountData(config.email, config.password);
     }
 
     @ParameterizedTest

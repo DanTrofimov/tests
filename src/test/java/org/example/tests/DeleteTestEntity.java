@@ -13,7 +13,7 @@ public class DeleteTestEntity extends TodoEntityTest {
     @Before
     public void init() {
         setUp();
-        currentUser = new AccountData("trofimovdanil946@gmail.com", "Hello123");
+        currentUser = new AccountData(config.email, config.password);
     }
 
     @Test

@@ -12,13 +12,13 @@ public class LoginTest extends AuthBase {
     @Before
     public void init() {
         setUp();
-        currentUser = new AccountData("trofimovdanil946@gmail.com", "Hello123");
+        currentUser = new AccountData(config.email, config.password);
     }
 
     @Test
     public void loginWithValidData() {
         // Arrange
-        String expectedUrl = "https://todo--spring--boot.herokuapp.com/main";
+        String expectedUrl = config.baseUrl + "main";
         // Act
         auth(currentUser);
         // Assert
@@ -28,9 +28,9 @@ public class LoginTest extends AuthBase {
     @Test
     public void loginWithInvalidData() {
         // Arrange
-        String expectedUrl = "https://todo--spring--boot.herokuapp.com/main";
+        String expectedUrl = config.baseUrl + "main";
         // Act
-        currentUser = new AccountData("qwerty@gmail.com", "123123");
+        currentUser = new AccountData(config.invalidEmail, config.invalidPassword);
         auth(currentUser);
         // Assert
         Assert.assertNotEquals( expectedUrl, getCurrentUrl());
