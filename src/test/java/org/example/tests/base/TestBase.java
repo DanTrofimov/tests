@@ -24,11 +24,6 @@ public class TestBase {
         this.findItemsHelper = appManager.getFindItemsHelper();
     };
 
-    public void auth(AccountData user) {
-        this.navigationHelper.visitPage("sign-in");
-        this.loginHelper.auth(user);
-    };
-
     public boolean hasItemByText(String text) {
         return this.findItemsHelper.hasElementByText(text);
     }

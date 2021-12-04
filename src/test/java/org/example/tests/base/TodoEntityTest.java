@@ -2,7 +2,7 @@ package org.example.tests.base;
 
 import org.example.entities.TodoItem;
 
-public class TodoEntityTest extends TestBase {
+public class TodoEntityTest extends AuthBase {
 
     public void createTodo(TodoItem todo) {
         navigationHelper.visitPage("main");

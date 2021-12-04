@@ -1,12 +1,12 @@
 package org.example.tests;
 
 import org.example.entities.AccountData;
-import org.example.tests.base.TestBase;
+import org.example.tests.base.AuthBase;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LoginTest extends TestBase {
+public class LoginTest extends AuthBase {
     public AccountData currentUser;
 
     @Before
