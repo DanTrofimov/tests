@@ -1,7 +1,6 @@
 package org.example.tests.base;
 import org.example.AppManager;
 import org.example.entities.AccountData;
-import org.example.entities.TodoItem;
 import org.example.helpers.FindItemsHelper;
 import org.example.helpers.LoginHelper;
 import org.example.helpers.NavigationHelper;
@@ -26,16 +25,16 @@ public class TestBase {
     };
 
     public void auth(AccountData user) {
-        navigationHelper.visitPage("sign-in");
-        loginHelper.auth(user);
+        this.navigationHelper.visitPage("sign-in");
+        this.loginHelper.auth(user);
     };
 
     public boolean hasItemByText(String text) {
-        return findItemsHelper.hasElementByText(text);
+        return this.findItemsHelper.hasElementByText(text);
     }
 
     public String getCurrentUrl() {
-        return navigationHelper.getCurrentUrl();
+        return this.navigationHelper.getCurrentUrl();
     }
 
     public void destruct() {

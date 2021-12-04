@@ -2,28 +2,41 @@ package org.example.tests;
 
 import org.example.entities.AccountData;
 import org.example.entities.TodoItem;
+import org.example.generator.GenerateData;
 import org.example.tests.base.TodoEntityTest;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.LinkedHashMap;
+import java.util.stream.Stream;
 
 public class CreteEntityTest extends TodoEntityTest {
-    public AccountData currentUser;
+    public static GenerateData<TodoItem> generateData = new GenerateData<>();
+    public static AccountData currentUser;
 
-    @Before
+    public static Stream<Arguments> getGeneratedData() {
+        String sourceFile = "todo.xml";
+        generateData.handleEntity("t", sourceFile);
+        return Stream.of(Arguments.of(generateData.getEntity(sourceFile)));
+    }
+
+    @BeforeEach
     public void init() {
         setUp();
         currentUser = new AccountData("trofimovdanil946@gmail.com", "Hello123");
     }
 
-    @Test
-    public void createTodo() {
-        String todoText = "example text " + Math.random();
-        TodoItem todo = new TodoItem(todoText);
-
+    @ParameterizedTest
+    @MethodSource("getGeneratedData")
+    // JUnit can't convert map -> TodoItem, do it by urself
+    public void createTodoItem(LinkedHashMap generatedData) {
+        TodoItem todo = new TodoItem((String) generatedData.get("text"));
         auth(currentUser);
         createTodo(todo);
 
-        Assert.assertTrue(hasItemByText(todoText));
+        Assertions.assertTrue(hasItemByText(todo.text));
     }
 }
