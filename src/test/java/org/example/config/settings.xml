@@ -1,7 +1,0 @@
-<Config>
-    <baseUrl>https://todo--spring--boot.herokuapp.com/</baseUrl>
-    <email>trofimovdanil946@gmail.com</email>
-    <password>Hello123</password>
-    <invalidEmail>qwerty@gmail.com</invalidEmail>
-    <invalidPassword>123123</invalidPassword>
-</Config>
